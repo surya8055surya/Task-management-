@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Sign in - Task Manager{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-4">
+
+        <ul class="nav nav-tabs mb-4" id="authTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-pane"
+                    type="button" role="tab">Login</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-pane"
+                    type="button" role="tab">Register</button>
+          </li>
+        </ul>
+
+        <div id="auth-alert" class="alert alert-danger d-none" role="alert"></div>
+
+        <div class="tab-content">
+          <!-- LOGIN -->
+          <div class="tab-pane fade show active" id="login-pane" role="tabpanel">
+            <form id="login-form" novalidate>
+              <div class="mb-3">
+                <label for="login-username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="login-username" required autocomplete="username">
+              </div>
+              <div class="mb-3">
+                <label for="login-password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="login-password" required autocomplete="current-password">
+              </div>
+              <button type="submit" class="btn btn-primary w-100" id="login-submit">
+                <span class="spinner-border spinner-border-sm d-none" id="login-spinner"></span>
+                Login
+              </button>
+            </form>
+          </div>
+
+          <!-- REGISTER -->
+          <div class="tab-pane fade" id="register-pane" role="tabpanel">
+            <form id="register-form" novalidate>
+              <div class="mb-3">
+                <label for="reg-username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="reg-username" required autocomplete="username">
+              </div>
+              <div class="mb-3">
+                <label for="reg-email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="reg-email" required autocomplete="email">
+              </div>
+              <div class="mb-3">
+                <label for="reg-password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="reg-password" required autocomplete="new-password">
+                <div class="form-text">At least 8 characters, not too common or all-numeric.</div>
+              </div>
+              <div class="mb-3">
+                <label for="reg-password2" class="form-label">Confirm password</label>
+                <input type="password" class="form-control" id="reg-password2" required autocomplete="new-password">
+              </div>
+              <button type="submit" class="btn btn-success w-100" id="register-submit">
+                <span class="spinner-border spinner-border-sm d-none" id="register-spinner"></span>
+                Create account
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/auth.js' %}"></script>
+{% endblock %}
